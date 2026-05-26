@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoBetter Concert - Dashboard Pelanggan</title>
+    <link rel="stylesheet" href="Pelanggan.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <h1 class="logo"><span>🎵</span> GoBetter</h1>
+        <ul class="menu">
+            <li><a href="#" id="nav-home" class="nav-user-item active" onclick="switchUserMenu('home', this)">Home</a></li>
+            <li><a href="#" id="nav-tiket" class="nav-user-item" onclick="switchUserMenu('tiket', this)">Pesan Tiket</a></li>
+            <li><a href="#" id="nav-riwayat" class="nav-user-item" onclick="switchUserMenu('riwayat', this)">Riwayat</a></li>
+            <li><a href="#" id="nav-profil" class="nav-user-item" onclick="switchUserMenu('profil', this)">Profil Akun</a></li>
+            <li><a href="#" id="nav-contact" class="nav-user-item" onclick="switchUserMenu('contact', this)">Contact</a></li>
+            <li><a href="login.html" class="login-admin-nav-btn">Login Admin</a></li>
+        </ul>
+    </nav>
+
+    <div class="container-user">
+        
+        <div id="user-content-home" class="user-section-content active">
+            <header class="user-welcome">
+                <h2>Selamat Datang di <span style="color:#ff4fd8; text-shadow: 0 0 10px rgba(255,79,216,0.3);">GoBetter Concert</span>! 🎸🎤</h2>
+                <p>Platform e-tiket konser musik terbesar. Cari, kelola, dan sesuaikan jadwal festival musik Anda secara instan.</p>
+            </header>
+            
+            <section style="margin-top: 35px;">
+                <h3 style="color: #ff4fd8; font-size: 18px; margin-bottom: 5px; font-weight: 600;">🔥 Rekomendasi Konser Terlaris 2026</h3>
+                <p style="color: #bcbcbc; font-size: 13px; margin-bottom: 15px;">Geser/Scroll ke samping untuk melihat konser paling hits tahun ini!</p>
+                
+                <div class="scroll-container-horizontal">
+                    <div class="recommend-card">
+                        <div class="badge-trending">BEST SELLER</div>
+                        <h4>Summer Music Fest 2026</h4>
+                        <p class="desc">Festival pantai terbesar bersama musisi internasional papan atas.</p>
+                        <div class="price-tag">Rp550.000</div>
+                        <button onclick="quickBuy('Summer Music Fest 2026')" class="btn-main" style="width:100%; padding: 8px; font-size: 12px; margin-top: 10px;">Pesan Sekarang</button>
+                    </div>
+
+                    <div class="recommend-card">
+                        <div class="badge-trending">TRENDING #1</div>
+                        <h4>Galaxy EDM Night 2026</h4>
+                        <p class="desc">Pesta cahaya neon elektrik bersama DJ nomor 1 dunia.</p>
+                        <div class="price-tag">Rp750.000</div>
+                        <button onclick="quickBuy('Galaxy EDM Night 2026')" class="btn-main" style="width:100%; padding: 8px; font-size: 12px; margin-top: 10px;">Pesan Sekarang</button>
+                    </div>
+
+                    <div class="recommend-card">
+                        <div class="badge-trending">HAMPIR HABIS</div>
+                        <h4>Neon Party Senandung</h4>
+                        <p class="desc">Simfoni lagu indie syahdu terbaik dalam balutan visual estetik.</p>
+                        <div class="price-tag">Rp350.000</div>
+                        <button onclick="quickBuy('Neon Party Senandung')" class="btn-main" style="width:100%; padding: 8px; font-size: 12px; margin-top: 10px;">Pesan Sekarang</button>
+                    </div>
+
+                    <div class="recommend-card">
+                        <div class="badge-trending">POPULER</div>
+                        <h4>Seoul Wave In Jakarta</h4>
+                        <p class="desc">Konser K-Pop terbesar tahun ini dengan penampilan grup idola legendaris.</p>
+                        <div class="price-tag">Rp1.200.000</div>
+                        <button onclick="quickBuy('Seoul Wave In Jakarta')" class="btn-main" style="width:100%; padding: 8px; font-size: 12px; margin-top: 10px;">Pesan Sekarang</button>
+                    </div>
+                </div>
+            </section>
+
+            <div class="stats-container" style="margin-top: 40px; display: flex; gap: 20px; flex-wrap: wrap;">
+                <div class="card" style="flex: 1; min-width: 250px; background: #1a0b22; padding: 20px; border-radius: 12px; border: 1px solid #ff4fd8;">
+                    <h3 style="color: #ff4fd8; margin-bottom: 10px;">🔥 Konser Trending</h3>
+                    <p style="color: #bcbcbc; font-size: 14px;"><strong id="trending-concert-name">Summer Music Fest 2026</strong> sedang berlangsung! Kuota tiket menipis.</p>
+                </div>
+                <div class="card" style="flex: 1; min-width: 250px; background: #1a0b22; padding: 20px; border-radius: 12px; border: 1px solid #ff4fd8;">
+                    <h3 style="color: #ff4fd8; margin-bottom: 10px;">⚡ Metode QRIS Instan</h3>
+                    <p style="color: #bcbcbc; font-size: 14px;">Beli tiket kustom langsung scan QRIS, e-tiket otomatis tercetak.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="user-content-tiket" class="user-section-content">
+            <header class="user-welcome">
+                <h2>Workspace Pengelolaan Tiket Konser</h2>
+                <p>Gunakan form untuk memesan, melakukan pembayaran, atau mengubah detail e-tiket aktif Anda.</p>
+            </header>
+
+            <div class="workspace-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
+                <div class="left-pane" style="display: flex; flex-direction: column; gap: 25px;">
+                    <section class="crud-form-section">
+                        <h3 id="form-title" style="color: #ff4fd8; font-size: 16px; margin-bottom: 15px;">🎟️ Form Pemesanan Tiket Baru</h3>
+                        <input type="hidden" id="editTicketId" value="">
+
+                        <form id="orderTicketForm" onsubmit="handleFormSubmit(event)" style="display: flex; flex-direction: column; gap: 12px;">
+                            <input type="text" id="orderCustomerName" placeholder="Nama Lengkap Pemesan" required style="padding:12px; background:#16162d; border:1px solid #333; color:#fff; border-radius:8px;">
+                            
+                            <select id="orderConcertName" onchange="updateConcertDetails()" required style="padding:12px; background:#16162d; border:1px solid #333; color:#fff; border-radius:8px;">
+                                <option value="">-- Pilih Konser --</option>
+                                <option value="Summer Music Fest 2026">Summer Music Fest 2026</option>
+                                <option value="Galaxy EDM Night 2026">Galaxy EDM Night 2026</option>
+                                <option value="Neon Party Senandung">Neon Party Senandung</option>
+                                <option value="Seoul Wave In Jakarta">Seoul Wave In Jakarta</option>
+                            </select>
+
+                            <select id="orderCategory" required style="padding:12px; background:#16162d; border:1px solid #333; color:#fff; border-radius:8px;">
+                                <option value="">-- Pilih Kategori --</option>
+                                <option value="VIP Seat Premium">VIP Seat Premium</option>
+                                <option value="Festival Arena">Festival Arena</option>
+                                <option value="Regular Ticket">Regular Ticket</option>
+                            </select>
+
+                            <input type="date" id="orderDate" required style="padding:12px; background:#16162d; border:1px solid #333; color:#fff; border-radius:8px;">
+                            
+                            <div style="display: flex; gap: 10px;">
+                                <button type="submit" id="submitBtn" class="btn-main" style="padding: 12px; flex: 1;">Proses Pemesanan</button>
+                                <button type="button" id="cancelEditBtn" onclick="resetFormState()" class="btn-action" style="display: none; background: #333; color: #fff; padding: 12px;">Batal</button>
+                            </div>
+                        </form>
+                    </section>
+
+                    <section class="crud-form-section" style="border-left: 4px solid #ff4fd8;">
+                        <h3 style="color: #ff4fd8; font-size: 16px; margin-bottom: 10px;">⏱️ Live Ticket Countdown</h3>
+                        <div id="countdown-display" style="font-size: 24px; font-weight: bold; color: #fff; background: #16162d; padding: 10px; border-radius: 8px; text-align: center; letter-spacing: 2px; border: 1px solid #ff4fd8;">
+                            05 : 00
+                        </div>
+                    </section>
+                </div>
+
+                <div class="right-pane" style="display: flex; flex-direction: column; gap: 25px;">
+                    <section class="crud-form-section">
+                        <h3 style="color: #ff4fd8; font-size: 16px; margin-bottom: 15px;">📊 Live Concert & Detail Preview</h3>
+                        <div id="concert-detail-card" style="background: #16162d; padding: 15px; border-radius: 8px; font-size: 14px; line-height: 1.6;">
+                            <div style="font-weight: 600; color: #fff; margin-bottom: 8px;" id="preview-title">Belum Ada Konser Dipilih</div>
+                            <table style="width: 100%; border-collapse: collapse; margin-top: 5px; color:#bcbcbc; font-size: 13px;">
+                                <tr><td style="padding: 4px 0;">Lokasi Venue:</td><td id="preview-venue" style="color:#fff; text-align:right;">-</td></tr>
+                                <tr><td style="padding: 4px 0;">Pintu Gate:</td><td id="preview-gate" style="color:#fff; text-align:right;">-</td></tr>
+                                <tr><td style="padding: 4px 0;">Maks Kuota:</td><td id="preview-quota" style="color:#ff4fd8; text-align:right; font-weight:600;">-</td></tr>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="crud-form-section" id="pembayaran-section" style="opacity: 0.5; pointer-events: none; transition: 0.3s;">
+                        <h3 style="color: #ff4fd8; font-size: 16px; margin-bottom: 10px;">💳 Gerbang Pembayaran QRIS</h3>
+                        <div style="text-align: center; background: #fff; padding: 12px; border-radius: 10px; display: inline-block; margin: 10px auto; width: 160px;">
+                            <img id="qrisImage" src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=GoBetterStatic" alt="QRIS" style="width:140px; height:140px; display:block;">
+                        </div>
+                        <div id="qrisDetailText" style="font-size: 12px; color: #bcbcbc; margin-bottom: 15px; text-align: left; background: #16162d; padding: 10px; border-radius: 6px;">
+                            Silakan isi form pemesanan terlebih dahulu untuk memunculkan tagihan QRIS otomatis.
+                        </div>
+                        <button type="button" onclick="simulatePaymentSuccess()" class="btn-main" style="width: 100%; padding: 10px; font-size: 13px;">Konfirmasi Pembayaran Instan</button>
+                    </section>
+                </div>
+            </div>
+
+            <section class="active-tickets" style="margin-top: 40px;">
+                <h3 style="margin-bottom: 15px;">E-Tiket Aktif Anda (Siap Digunakan)</h3>
+                <div id="ticket-list-container" style="display: flex; flex-direction: column; gap: 20px;">
+                    <div class="ticket-card-user" id="ticket-default" style="border-left: 4px solid #ff4fd8;">
+                        <div class="ticket-info">
+                            <span class="badge badge-success">E-Tiket Siap</span>
+                            <h4 class="t-concert" style="font-size: 20px; margin-top: 8px;">Summer Music Fest 2026</h4>
+                            <p style="margin: 5px 0;">📆 Tanggal: <span class="t-date" data-raw="2026-06-20">20 Juni 2026</span></p>
+                            <p style="margin: 2px 0;">👤 Pemesan: <span class="t-name">Pelanggan Demo</span></p>
+                            <p style="margin: 2px 0;">🎫 Kategori: <strong class="t-category" style="color: #ff4fd8;">Festival Arena</strong></p>
+                            <div style="margin-top: 15px;">
+                                <button class="btn-action btn-edit" onclick="prepareEditTicket('ticket-default')" style="background: #ff4fd8; color: #100516; margin-right: 5px; font-weight:bold;">Ubah Detail</button>
+                                <button class="btn-action btn-delete" onclick="cancelTicket('ticket-default')">Batalkan Tiket</button>
+                            </div>
+                        </div>
+                        <div class="ticket-qr-preview">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=GoBetterTicketDemo" class="t-qr" alt="QR Code">
+                            <div style="color:#100516; font-size:10px; margin-top:5px; font-weight:600;">Gate Scan Masuk</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="user-content-riwayat" class="user-section-content">
+            <header class="user-welcome">
+                <h2>Daftar Pendaftaran & Riwayat Transaksi</h2>
+                <p>Tabel log pencatatan transaksi masuk pembayaran tiket Anda secara terpisah.</p>
+            </header>
+            <div class="table-scroll-container" style="margin-top: 35px; background: #1a0b22; padding: 20px; border-radius: 12px; border: 1px solid #4a195d;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid #ff4fd8; color: #ff4fd8;">
+                            <th style="padding: 12px;">ID Invoice</th>
+                            <th style="padding: 12px;">Konser</th>
+                            <th style="padding: 12px;">Kategori</th>
+                            <th style="padding: 12px;">Metode</th>
+                            <th style="padding: 12px;">Status Registrasi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-table-body">
+                        <tr style="border-bottom: 1px solid #331640; color: #fff;">
+                            <td style="padding: 12px; color: #bcbcbc;">TX-00921</td>
+                            <td style="padding: 12px;">Summer Music Fest 2026</td>
+                            <td style="padding: 12px;">Festival Arena</td>
+                            <td style="padding: 12px;">QRIS Elektronik</td>
+                            <td style="padding: 12px;"><span style="color:#ff4fd8; background:rgba(255,79,216,0.1); padding:4px 8px; border-radius:5px;">TERDAFTAR</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="user-content-profil" class="user-section-content">
+            <header class="user-welcome">
+                <h2>Pengaturan Profil Akun</h2>
+                <p>Perbarui informasi biodata akun pembeli Anda.</p>
+            </header>
+            <div style="background: #1a0b22; padding: 30px; border-radius: 15px; max-width: 500px; margin-top: 30px; border: 1px solid #4a195d;">
+                <form onsubmit="updateProfile(event)">
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <label style="color:#bcbcbc; display:block; margin-bottom:5px;">Nama Pengguna</label>
+                        <input type="text" id="input-profile-name" value="Pelanggan Demo" style="width: 100%; padding: 10px; background:#16162d; border:1px solid #333; color:#fff; border-radius:8px;">
+                    </div>
+                    <button type="submit" class="btn-main" style="width: auto; padding: 10px 20px;">Simpan Perubahan</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="user-content-contact" class="user-section-content">
+            <header class="user-welcome">
+                <h2>Hubungi Layanan <span style="color:#ff4fd8;">GoBetter Support</span> 📞</h2>
+                <p>Punya kendala terkait pembayaran QRIS atau e-tiket? Tim kami siap melayani Anda 24/7.</p>
+            </header>
+            
+            <div class="contact-wrapper">
+                <div class="crud-form-section">
+                    <h3 style="color: #ff4fd8; font-size: 16px; margin-bottom: 15px;">📨 Kirim Pesan Instan</h3>
+                    <form onsubmit="alert('Pesan Anda berhasil dikirim! Tim support kami akan segera menghubungi Anda.'); this.reset(); return false;" style="display: flex; flex-direction: column; gap: 15px;">
+                        <input type="text" placeholder="Subjek Masalah (E-tiket/Pembayaran)" required style="padding:12px; background:#16162d; border:1px solid #333; color:#fff; border-radius:8px;">
+                        <textarea placeholder="Tuliskan detail kendala atau pertanyaan Anda di sini..." rows="5" required style="padding:12px; background:#16162d; border:1px solid #333; color:#fff; border-radius:8px; resize: none; font-family: inherit;"></textarea>
+                        <button type="submit" class="btn-main" style="padding: 12px;">Kirim Aduan</button>
+                    </form>
+                </div>
+
+                <div class="contact-info-card" style="display: flex; flex-direction: column; gap: 15px;">
+                    <div class="info-box-item">
+                        <h5>📍 Kantor Pusat</h5>
+                        <p>Jl. Kampus Universitas Angkasa No. 45, Gedung IT Lantai 3</p>
+                    </div>
+                    <div class="info-box-item">
+                        <h5>📧 Email Dukungan</h5>
+                        <p>support@gobetterconcert.com</p>
+                    </div>
+                    <div class="info-box-item">
+                        <h5>📱 WhatsApp Hotline</h5>
+                        <p>+62 812-3456-7890 (Chat Only)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="plgn.js"></script>
+</body>
+</html>

@@ -1,0 +1,460 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#0f0f1a;
+  color:white;
+}
+
+/* LOADING */
+
+.loading{
+  position:fixed;
+  width:100%;
+  height:100vh;
+  background:#0f0f1a;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  font-size:30px;
+  color:#ff4fd8;
+  font-weight:600;
+}
+
+/* NOTIF */
+
+#notif{
+  position:fixed;
+  top:30px;
+  right:30px;
+  background:#ff4fd8;
+  color:white;
+  padding:18px 30px;
+  border-radius:15px;
+  display:none;
+  z-index:1000;
+  box-shadow:0 0 20px rgba(255,79,216,0.5);
+}
+
+/* NAVBAR */
+
+.navbar{
+  width:100%;
+  padding:20px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#141428;
+  position:sticky;
+  top:0;
+  z-index:999;
+}
+
+.logo{
+  color:#ff4fd8;
+  font-size:32px;
+}
+
+.menu{
+  display:flex;
+  gap:30px;
+  list-style:none;
+}
+
+.menu a{
+  color:white;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.menu a:hover{
+  color:#ff4fd8;
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  padding:70px 8%;
+  display:flex;
+  align-items:center;
+  gap:50px;
+}
+
+.hero-text{
+  flex:1;
+}
+
+.mini-title{
+  color:#ff4fd8;
+  margin-bottom:15px;
+}
+
+.hero-text h2{
+  font-size:60px;
+  line-height:75px;
+  margin-bottom:25px;
+}
+
+.hero-desc{
+  color:#bcbcbc;
+  line-height:30px;
+  margin-bottom:30px;
+}
+
+.hero-btn{
+  padding:15px 35px;
+  border:none;
+  background:#ff4fd8;
+  color:white;
+  border-radius:12px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.hero-btn:hover{
+  transform:scale(1.05);
+}
+
+.hero-image{
+  flex:1;
+}
+
+.hero-image img{
+  width:100%;
+  border-radius:25px;
+}
+
+/* CATEGORY */
+
+.category{
+  padding:80px 8%;
+}
+
+.title{
+  font-size:40px;
+  margin-bottom:30px;
+}
+
+.category-box{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.item{
+  padding:15px 30px;
+  background:#1d1d35;
+  border-radius:12px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.item:hover{
+  background:#ff4fd8;
+}
+
+.active{
+  background:#ff4fd8;
+}
+
+/* SEARCH */
+
+.search-box{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:12px;
+  background:#1d1d35;
+  color:white;
+  margin-bottom:35px;
+  outline:none;
+}
+
+/* CONCERT */
+
+.concert{
+  padding:80px 8%;
+}
+
+.concert-container{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:30px;
+}
+
+.card{
+  background:#141428;
+  border-radius:20px;
+  overflow:hidden;
+  transition:0.3s;
+  box-shadow:0 0 15px rgba(255,79,216,0.1);
+}
+
+.card:hover{
+  transform:translateY(-10px);
+}
+
+.card img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+}
+
+.card-body{
+  padding:25px;
+}
+
+.card-body h3{
+  margin-bottom:12px;
+}
+
+.card-body p{
+  color:#bcbcbc;
+  margin-bottom:15px;
+}
+
+.card-body h4{
+  color:#ff4fd8;
+  margin-bottom:20px;
+}
+
+.card-body button{
+  width:100%;
+  padding:14px;
+  border:none;
+  background:#ff4fd8;
+  color:white;
+  border-radius:12px;
+  margin-bottom:10px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.card-body button:hover{
+  opacity:0.8;
+}
+
+/* DETAIL */
+
+.detail-section{
+  padding:80px 8%;
+}
+
+.detail-box{
+  background:#141428;
+  padding:35px;
+  border-radius:20px;
+  line-height:40px;
+  border:1px solid rgba(255,79,216,0.3);
+}
+
+.detail-box h3{
+  color:#ff4fd8;
+  margin-bottom:20px;
+  font-size:30px;
+}
+
+/* COUNTDOWN */
+
+.countdown{
+  padding:80px 8%;
+  text-align:center;
+}
+
+.date-input{
+  padding:15px;
+  border:none;
+  border-radius:12px;
+  background:#1d1d35;
+  color:white;
+  outline:none;
+}
+
+.set-btn{
+  padding:15px 30px;
+  border:none;
+  background:#ff4fd8;
+  color:white;
+  border-radius:12px;
+  cursor:pointer;
+  margin-left:10px;
+}
+
+.count-box{
+  margin-top:40px;
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  flex-wrap:wrap;
+}
+
+.time{
+  width:160px;
+  background:#141428;
+  padding:35px 20px;
+  border-radius:20px;
+  box-shadow:0 0 15px rgba(255,79,216,0.1);
+}
+
+.time h3{
+  font-size:45px;
+  color:#ff4fd8;
+  margin-bottom:10px;
+}
+
+/* TICKET */
+
+.ticket{
+  padding:80px 8%;
+}
+
+.ticket-box{
+  max-width:550px;
+  margin:auto;
+  background:#141428;
+  padding:35px;
+  border-radius:20px;
+}
+
+.ticket-box h2{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.ticket-box form{
+  display:flex;
+  flex-direction:column;
+}
+
+.ticket-box input,
+.ticket-box select{
+  padding:15px;
+  margin-bottom:20px;
+  border:none;
+  border-radius:12px;
+  background:#1d1d35;
+  color:white;
+  outline:none;
+}
+
+.ticket-box button{
+  padding:15px;
+  border:none;
+  background:#ff4fd8;
+  color:white;
+  border-radius:12px;
+  cursor:pointer;
+}
+
+.ticket-box button:hover{
+  opacity:0.8;
+}
+
+/* QRIS */
+
+.qris-box{
+  text-align:center;
+  margin-top:35px;
+}
+
+.qris-box img{
+  background:white;
+  padding:10px;
+  border-radius:20px;
+  margin-top:15px;
+}
+
+/* DATABASE */
+
+.database-section{
+  padding:80px 8%;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  overflow:hidden;
+  border-radius:20px;
+  background:#141428;
+  box-shadow:0 0 20px rgba(255,79,216,0.1);
+}
+
+table thead{
+  background:#ff4fd8;
+}
+
+table th{
+  padding:18px;
+  text-align:center;
+  color:white;
+  font-size:16px;
+}
+
+table td{
+  padding:18px;
+  text-align:center;
+  color:#dcdcdc;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+table tr:hover{
+  background:#1d1d35;
+  transition:0.3s;
+}
+
+/* FOOTER */
+
+footer{
+  background:#141428;
+  padding:50px 20px;
+  text-align:center;
+  margin-top:80px;
+}
+
+footer h2{
+  color:#ff4fd8;
+  margin-bottom:20px;
+}
+
+footer p{
+  color:#bcbcbc;
+  margin-bottom:10px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+  .hero{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .hero-text h2{
+    font-size:42px;
+    line-height:55px;
+  }
+
+  .concert-container{
+    grid-template-columns:1fr;
+  }
+
+  .menu{
+    display:none;
+  }
+
+  table{
+    font-size:12px;
+  }
+
+}

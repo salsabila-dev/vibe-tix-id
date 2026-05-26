@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoBetter Concert - Admin Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+
+    <div class="login-card" style="background: #101021; padding: 40px; border-radius: 15px; border: 1px solid #b536ff; max-width: 380px; width: 100%; box-shadow: 0 0 20px rgba(181, 54, 255, 0.2);">
+        <h2 style="color: #fff; text-align: center; margin-bottom: 5px;">🔐 Portal Admin</h2>
+        <p style="color: #bcbcbc; text-align: center; font-size: 13px; margin-bottom: 25px;">Masukkan kredensial khusus administrator</p>
+        
+        <form onsubmit="validateAdminLogin(event)">
+            <div class="form-group" style="margin-bottom: 15px;">
+                <input type="text" id="adminUser" placeholder="Username Admin" required style="width: 100%; padding: 12px; background: #16162d; border: 1px solid #333; color: #fff; border-radius: 8px;">
+            </div>
+            <div class="form-group" style="margin-bottom: 20px;">
+                <input type="password" id="adminPass" placeholder="Password" required style="width: 100%; padding: 12px; background: #16162d; border: 1px solid #333; color: #fff; border-radius: 8px;">
+            </div>
+            <button type="submit" class="btn-main" style="width: 100%; margin: 0; background: linear-gradient(90deg, #b536ff, #ff4fd8);">Log In Admin</button>
+        </form>
+        <div style="text-align: center; margin-top: 15px;">
+            <a href="pelanggan.html" style="color: #bcbcbc; font-size: 12px; text-decoration: none;">← Kembali ke Halaman Pembeli</a>
+        </div>
+    </div>
+
+    <script>
+        function validateAdminLogin(event) {
+            event.preventDefault();
+            const user = document.getElementById('adminUser').value;
+            const pass = document.getElementById('adminPass').value;
+
+            // Kredensial Login Sederhana untuk Presentasi UTS
+            if(user === "admin" && pass === "admin123") {
+                alert("Login Sukses Sebagai Administrator!");
+                window.location.href = "admin.html";
+            } else {
+                alert("Username atau password admin salah!");
+            }
+        }
+    </script>
+</body>
+</html>

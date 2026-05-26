@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoBetter - Panel Control Administrator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar" style="border-bottom: 2px solid #b536ff; background-color: #0c0c1a;">
+        <h1 class="logo"><span>⚙️</span> GoBetter <small style="font-size: 12px; color: #b536ff; font-weight: bold;">ADMIN PANEL</small></h1>
+        <ul class="menu">
+            <li><a href="#" class="nav-user-item active" style="color: #b536ff;">Dashboard Core</a></li>
+            <li><a href="pelanggan.html" style="background: #ff4fd4; color: #101021; padding: 5px 15px; border-radius: 6px; font-weight: bold;">Logout System</a></li>
+        </ul>
+    </nav>
+
+    <div class="container-user">
+        <header class="user-welcome">
+            <h2>Pusat Kendali Data Administrator 🛠️</h2>
+            <p>Kelola slot kuota tiket konser, kelola pendaftaran event baru, manipulasi data transaksi secara *real-time*.</p>
+        </header>
+
+        <div style="display:flex; gap:20px; margin-top:30px; flex-wrap:wrap;">
+            <div style="background:#101021; padding:22px; border-radius:12px; flex:1; min-width:220px; border: 1px solid #333; border-top: 4px solid #b536ff;">
+                <h4 style="color:#bcbcbc; font-size:13px; font-weight: 400;">Total Omset Pendapatan</h4>
+                <p id="admin-stat-revenue" style="color:#fff; font-size:26px; font-weight:bold; margin-top:5px;">Rp687.500.000</p>
+            </div>
+            <div style="background:#101021; padding:22px; border-radius:12px; flex:1; min-width:220px; border: 1px solid #333; border-top: 4px solid #ff4fd8;">
+                <h4 style="color:#bcbcbc; font-size:13px; font-weight: 400;">Total Tiket Terdistribusi</h4>
+                <p id="admin-stat-sold" style="color:#fff; font-size:26px; font-weight:bold; margin-top:5px;">1,250 Lembar</p>
+            </div>
+            <div style="background:#101021; padding:22px; border-radius:12px; flex:1; min-width:220px; border: 1px solid #333; border-top: 4px solid #2bc48a;">
+                <h4 style="color:#bcbcbc; font-size:13px; font-weight: 400;">Jumlah Event Aktif</h4>
+                <p id="admin-stat-events" style="color:#2bc48a; font-size:26px; font-weight:bold; margin-top:5px;">4 Konser</p>
+            </div>
+        </div>
+
+        <div class="workspace-grid" style="display: grid; grid-template-columns: 1fr 2fr; gap: 30px; margin-top: 40px;">
+            
+            <div class="left-pane">
+                <section class="crud-form-section" style="border-color: #b536ff;">
+                    <h3 id="admin-form-title" style="color: #b536ff; font-size: 16px; margin-bottom: 15px;">➕ Tambah / Edit Event Konser</h3>
+                    <input type="hidden" id="editEventId" value="">
+
+                    <form id="adminEventForm" onsubmit="handleAdminFormSubmit(event)" style="display: flex; flex-direction: column; gap: 12px;">
+                        <input type="text" id="adminConcertName" placeholder="Nama Konser Musik Baru" required style="padding:12px; background:#16162d; border:1px solid #333; color:#fff; border-radius:8px;">
+                        <input type="number" id="adminConcertQuota" placeholder="Total Slot Kursi Kuota" required style="padding:12px; background:#16162d; border:1px solid #333; color:#fff; border-radius:8px;">
+                        <input type="text" id="adminConcertPrice" placeholder="Harga Tiket (cth: Rp550.000)" required style="padding:12px; background:#16162d; border:1px solid #333; color:#fff; border-radius:8px;">
+                        
+                        <select id="adminConcertStatus" required style="padding:12px; background:#16162d; border:1px solid #333; color:#fff; border-radius:8px;">
+                            <option value="BUKA">BUKA (Pendaftaran Aktif)</option>
+                            <option value="PENUH">PENUH (Slot Habis)</option>
+                            <option value="TUTUP">TUTUP (Selesai)</option>
+                        </select>
+
+                        <div style="display: flex; gap: 10px; margin-top: 5px;">
+                            <button type="submit" id="adminSubmitBtn" class="btn-main" style="padding: 12px; flex: 1; background: linear-gradient(90deg, #b536ff, #ff4fd8);">Publish Event</button>
+                            <button type="button" id="adminCancelBtn" onclick="resetAdminForm()" class="btn-action" style="display: none; background: #333; color: #fff; padding: 12px;">Batal</button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+
+            <div class="right-pane">
+                <section class="crud-form-section">
+                    <h3 style="color: #fff; font-size: 16px; margin-bottom: 15px;">📊 Tabel Kontrol Utama Slot Konser Aktif</h3>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; text-align: left; color:#fff; font-size: 14px;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid #b536ff; color:#b536ff;">
+                                    <th style="padding: 12px 10px;">Nama Konser</th>
+                                    <th style="padding: 12px 10px;">Slot Kuota</th>
+                                    <th style="padding: 12px 10px;">Harga Tiket</th>
+                                    <th style="padding: 12px 10px;">Status</th>
+                                    <th style="padding: 12px 10px; text-align: center;">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-concert-table-body">
+                                <tr id="row-1" style="border-bottom: 1px solid #222;">
+                                    <td class="td-name" style="padding: 12px 10px; font-weight: 500;">Summer Music Fest 2026</td>
+                                    <td class="td-quota" style="padding: 12px 10px;">45 Kursi</td>
+                                    <td class="td-price" style="padding: 12px 10px;">Rp550.000</td>
+                                    <td class="td-status" style="padding: 12px 10px;"><span style="color:#2bc48a; background:rgba(43,196,138,0.1); padding:4px 8px; border-radius:5px; font-size:12px; font-weight:bold;">BUKA</span></td>
+                                    <td style="padding: 12px 10px; text-align: center;">
+                                        <button onclick="prepareEditEvent('row-1')" style="background:#2bc48a; color:#fff; border:none; padding:6px 12px; border-radius:4px; cursor:pointer; margin-right:5px; font-size:12px;">Edit</button>
+                                        <button onclick="deleteEvent('row-1')" style="background:#ff4f4f; color:#fff; border:none; padding:6px 12px; border-radius:4px; cursor:pointer; font-size:12px;">Hapus</button>
+                                    </td>
+                                </tr>
+                                <tr id="row-2" style="border-bottom: 1px solid #222;">
+                                    <td class="td-name" style="padding: 12px 10px; font-weight: 500;">Galaxy EDM Night 2026</td>
+                                    <td class="td-quota" style="padding: 12px 10px;">120 Kursi</td>
+                                    <td class="td-price" style="padding: 12px 10px;">Rp750.000</td>
+                                    <td class="td-status" style="padding: 12px 10px;"><span style="color:#2bc48a; background:rgba(43,196,138,0.1); padding:4px 8px; border-radius:5px; font-size:12px; font-weight:bold;">BUKA</span></td>
+                                    <td style="padding: 12px 10px; text-align: center;">
+                                        <button onclick="prepareEditEvent('row-2')" style="background:#2bc48a; color:#fff; border:none; padding:6px 12px; border-radius:4px; cursor:pointer; margin-right:5px; font-size:12px;">Edit</button>
+                                        <button onclick="deleteEvent('row-2')" style="background:#ff4f4f; color:#fff; border:none; padding:6px 12px; border-radius:4px; cursor:pointer; font-size:12px;">Hapus</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+    </div>
+    <script src="admin.js"></script>
+</body>
+</html>
